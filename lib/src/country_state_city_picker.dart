@@ -197,7 +197,7 @@ class _CountryStateCityPickerState extends State<CountryStateCityPicker> {
 
                       ///Text Field for Searching
                       TextField(
-                        controller: _title == 'Ville'
+                        controller: _title == 'Pays'
                             ? controller
                             : _title == 'Département/Province'
                                 ? controller2
