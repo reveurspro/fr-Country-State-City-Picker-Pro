@@ -140,7 +140,7 @@ class _CountryStateCityPickerState extends State<CountryStateCityPicker> {
         TextField(
           controller: widget.city,
           onTap: () {
-            setState(() => _title = 'City');
+            setState(() => _title = 'Ville');
             if (widget.state.text.isNotEmpty) {
               _showDialog(context);
             } else {
