@@ -38,7 +38,7 @@ class _CountryStateCityPickerState extends State<CountryStateCityPicker> {
 
   @override
   void initState() {
-     _getCountry(); // Load the countries list
+    _getCountry(); // Load the countries list
     super.initState();
 
     // Set default country to India on initialization
@@ -98,12 +98,12 @@ class _CountryStateCityPickerState extends State<CountryStateCityPicker> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        ///Country TextField (Hidden)
+        ///Country TextField 
         TextField(
           controller: widget.country,
           onTap: () {
             // Optionally allow user to change country
-            // _showDialog(context); // If you want to keep this.
+            _showDialog(context); // If you want to keep this.
           },
           decoration: widget.textFieldDecoration == null
               ? defaultDecoration.copyWith(hintText: 'Selectionnez un pays')
@@ -111,6 +111,7 @@ class _CountryStateCityPickerState extends State<CountryStateCityPicker> {
                   ?.copyWith(hintText: 'Selectionnez un pays'),
           readOnly: true, // Hide it from the UI but it's still functional
         ),
+        const SizedBox(height: 20.0),
 
         ///State TextField with custom label
         TextField(
@@ -125,9 +126,11 @@ class _CountryStateCityPickerState extends State<CountryStateCityPicker> {
           },
           decoration: widget.textFieldDecoration == null
               ? defaultDecoration.copyWith(
-                  hintText: 'Selectionnez Département/Province', labelText: 'Département/Province') // Added label
+                  hintText: 'Selectionnez Département/Province',
+                  labelText: 'Département/Province') // Added label
               : widget.textFieldDecoration?.copyWith(
-                  hintText: 'Selectionnez Département/Province', labelText: 'Département/Province'), // Added label
+                  hintText: 'Selectionnez Département/Province',
+                  labelText: 'Département/Province'), // Added label
           readOnly: true,
         ),
         const SizedBox(height: 20.0),
@@ -145,9 +148,11 @@ class _CountryStateCityPickerState extends State<CountryStateCityPicker> {
           },
           decoration: widget.textFieldDecoration == null
               ? defaultDecoration.copyWith(
-                  hintText: 'Selectionnez une ville', labelText: 'Ville') // Added label
+                  hintText: 'Selectionnez une ville',
+                  labelText: 'Ville') // Added label
               : widget.textFieldDecoration?.copyWith(
-                  hintText: 'Selectionnez une ville', labelText: 'Ville'), // Added label
+                  hintText: 'Selectionnez une ville',
+                  labelText: 'Ville'), // Added label
           readOnly: true,
         ),
       ],
