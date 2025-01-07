@@ -38,15 +38,10 @@ class _CountryStateCityPickerState extends State<CountryStateCityPicker> {
 
   @override
   void initState() {
+     _getCountry(); // Load the countries list
     super.initState();
 
     // Set default country to India on initialization
-    widget.country.text = "India";
-    _getCountry(); // Load the countries list
-
-    // Auto-load states for India by passing the India ID (assuming it's in your data)
-    _getState(
-        "101"); // Assuming '101' is the ID for India, replace with actual ID if needed
   }
 
   Future<void> _getCountry() async {
@@ -104,19 +99,18 @@ class _CountryStateCityPickerState extends State<CountryStateCityPicker> {
     return Column(
       children: [
         ///Country TextField (Hidden)
-        // TextField(
-        //   controller: widget.country,
-        //   onTap: () {
-        //     // Optionally allow user to change country
-        //     // _showDialog(context); // If you want to keep this.
-        //   },
-        //   decoration: widget.textFieldDecoration == null
-        //       ? defaultDecoration.copyWith(hintText: 'Selectionnez country')
-        //       : widget.textFieldDecoration
-        //           ?.copyWith(hintText: 'Selectionnez country'),
-        //   readOnly: true, // Hide it from the UI but it's still functional
-        //   enabled: false, // Country is fixed to India
-        // ),
+        TextField(
+          controller: widget.country,
+          onTap: () {
+            // Optionally allow user to change country
+            // _showDialog(context); // If you want to keep this.
+          },
+          decoration: widget.textFieldDecoration == null
+              ? defaultDecoration.copyWith(hintText: 'Selectionnez un pays')
+              : widget.textFieldDecoration
+                  ?.copyWith(hintText: 'Selectionnez un pays'),
+          readOnly: true, // Hide it from the UI but it's still functional
+        ),
 
         ///State TextField with custom label
         TextField(
