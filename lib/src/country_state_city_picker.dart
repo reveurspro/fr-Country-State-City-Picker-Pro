@@ -98,19 +98,20 @@ class _CountryStateCityPickerState extends State<CountryStateCityPicker> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        ///Country TextField 
+        ///Country TextField
         TextField(
           controller: widget.country,
           onTap: () {
-            // Optionally allow user to change country
-            _showDialog(context); // If you want to keep this.
+            setState(() => _title = 'Country');
+            _showDialog(context);
           },
           decoration: widget.textFieldDecoration == null
               ? defaultDecoration.copyWith(hintText: 'Selectionnez un pays')
               : widget.textFieldDecoration
                   ?.copyWith(hintText: 'Selectionnez un pays'),
-          readOnly: true, // Hide it from the UI but it's still functional
+          readOnly: true,
         ),
+    
         const SizedBox(height: 20.0),
 
         ///State TextField with custom label
@@ -360,7 +361,7 @@ class _CountryStateCityPickerState extends State<CountryStateCityPicker> {
               ),
               Center(
                 child: Text(
-                  'Please Selectionnez a State',
+                  'Please Selectionnez une province',
                   textAlign: TextAlign.center,
                   style: const TextStyle(
                       color: Colors.black,
@@ -377,7 +378,7 @@ class _CountryStateCityPickerState extends State<CountryStateCityPicker> {
 
   InputDecoration defaultDecoration = const InputDecoration(
       isDense: true,
-      hintText: 'Select',
+      hintText: 'Selectionnez ',
       suffixIcon: Icon(Icons.arrow_drop_down),
       border: OutlineInputBorder());
 }
