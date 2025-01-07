@@ -111,9 +111,9 @@ class _CountryStateCityPickerState extends State<CountryStateCityPicker> {
         //     // _showDialog(context); // If you want to keep this.
         //   },
         //   decoration: widget.textFieldDecoration == null
-        //       ? defaultDecoration.copyWith(hintText: 'Select country')
+        //       ? defaultDecoration.copyWith(hintText: 'Selectionnez country')
         //       : widget.textFieldDecoration
-        //           ?.copyWith(hintText: 'Select country'),
+        //           ?.copyWith(hintText: 'Selectionnez country'),
         //   readOnly: true, // Hide it from the UI but it's still functional
         //   enabled: false, // Country is fixed to India
         // ),
@@ -122,18 +122,18 @@ class _CountryStateCityPickerState extends State<CountryStateCityPicker> {
         TextField(
           controller: widget.state,
           onTap: () {
-            setState(() => _title = 'State');
+            setState(() => _title = 'Département/Province');
             if (widget.country.text.isNotEmpty) {
               _showDialog(context);
             } else {
-              _showSnackBar('Select Country');
+              _showSnackBar('Selectionnez un Pays');
             }
           },
           decoration: widget.textFieldDecoration == null
               ? defaultDecoration.copyWith(
-                  hintText: 'Select state', labelText: 'State') // Added label
+                  hintText: 'Selectionnez Département/Province', labelText: 'Département/Province') // Added label
               : widget.textFieldDecoration?.copyWith(
-                  hintText: 'Select state', labelText: 'State'), // Added label
+                  hintText: 'Selectionnez Département/Province', labelText: 'Département/Province'), // Added label
           readOnly: true,
         ),
         const SizedBox(height: 20.0),
@@ -146,14 +146,14 @@ class _CountryStateCityPickerState extends State<CountryStateCityPicker> {
             if (widget.state.text.isNotEmpty) {
               _showDialog(context);
             } else {
-              _showSnackBar('Select State');
+              _showSnackBar('Selectionnez un Département/Province');
             }
           },
           decoration: widget.textFieldDecoration == null
               ? defaultDecoration.copyWith(
-                  hintText: 'Select city', labelText: 'City') // Added label
+                  hintText: 'Selectionnez une ville', labelText: 'Ville') // Added label
               : widget.textFieldDecoration?.copyWith(
-                  hintText: 'Select city', labelText: 'City'), // Added label
+                  hintText: 'Selectionnez une ville', labelText: 'Ville'), // Added label
           readOnly: true,
         ),
       ],
@@ -197,26 +197,26 @@ class _CountryStateCityPickerState extends State<CountryStateCityPicker> {
 
                       ///Text Field for Searching
                       TextField(
-                        controller: _title == 'Country'
+                        controller: _title == 'Pays'
                             ? controller
-                            : _title == 'State'
+                            : _title == 'Département/Province'
                                 ? controller2
                                 : controller3,
                         onChanged: (val) {
                           setState(() {
-                            if (_title == 'Country') {
+                            if (_title == 'Pays') {
                               _countrySubList = _countryList
                                   .where((element) => element.name
                                       .toLowerCase()
                                       .contains(controller.text.toLowerCase()))
                                   .toList();
-                            } else if (_title == 'State') {
+                            } else if (_title == 'Département/Province') {
                               _stateSubList = _stateList
                                   .where((element) => element.name
                                       .toLowerCase()
                                       .contains(controller2.text.toLowerCase()))
                                   .toList();
-                            } else if (_title == 'City') {
+                            } else if (_title == 'Ville') {
                               _citySubList = _cityList
                                   .where((element) => element.name
                                       .toLowerCase()
@@ -229,7 +229,7 @@ class _CountryStateCityPickerState extends State<CountryStateCityPicker> {
                             color: Colors.grey.shade800, fontSize: 16.0),
                         decoration: const InputDecoration(
                             border: UnderlineInputBorder(),
-                            hintText: "Search here...",
+                            hintText: "Recherchez...",
                             contentPadding: EdgeInsets.symmetric(
                                 vertical: 15, horizontal: 5),
                             isDense: true,
@@ -241,9 +241,9 @@ class _CountryStateCityPickerState extends State<CountryStateCityPicker> {
                         child: ListView.builder(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 8, vertical: 12),
-                          itemCount: _title == 'Country'
+                          itemCount: _title == 'Pays'
                               ? _countrySubList.length
-                              : _title == 'State'
+                              : _title == 'Département/Province'
                                   ? _stateSubList.length
                                   : _citySubList.length,
                           physics: const ClampingScrollPhysics(),
@@ -251,20 +251,20 @@ class _CountryStateCityPickerState extends State<CountryStateCityPicker> {
                             return InkWell(
                               onTap: () async {
                                 setState(() {
-                                  if (_title == "Country") {
+                                  if (_title == "Pays") {
                                     widget.country.text =
                                         _countrySubList[index].name;
                                     _getState(_countrySubList[index].id);
                                     _countrySubList = _countryList;
                                     widget.state.clear();
                                     widget.city.clear();
-                                  } else if (_title == 'State') {
+                                  } else if (_title == 'Département/Province') {
                                     widget.state.text =
                                         _stateSubList[index].name;
                                     _getCity(_stateSubList[index].id);
                                     _stateSubList = _stateList;
                                     widget.city.clear();
-                                  } else if (_title == 'City') {
+                                  } else if (_title == 'Ville') {
                                     widget.city.text = _citySubList[index].name;
                                     _citySubList = _cityList;
                                   }
@@ -278,9 +278,9 @@ class _CountryStateCityPickerState extends State<CountryStateCityPicker> {
                                 padding: const EdgeInsets.only(
                                     bottom: 20.0, left: 10.0, right: 10.0),
                                 child: Text(
-                                    _title == 'Country'
+                                    _title == 'Pays'
                                         ? _countrySubList[index].name
-                                        : _title == 'State'
+                                        : _title == 'Département/Province'
                                             ? _stateSubList[index].name
                                             : _citySubList[index].name,
                                     style: TextStyle(
@@ -308,7 +308,7 @@ class _CountryStateCityPickerState extends State<CountryStateCityPicker> {
                           controller3.clear();
                           Navigator.pop(context);
                         },
-                        child: const Text('Close'),
+                        child: const Text('Fermer'),
                       )
                     ],
                   ),
@@ -361,7 +361,7 @@ class _CountryStateCityPickerState extends State<CountryStateCityPicker> {
               ),
               Center(
                 child: Text(
-                  'Please select a State',
+                  'Please Selectionnez a State',
                   textAlign: TextAlign.center,
                   style: const TextStyle(
                       color: Colors.black,
